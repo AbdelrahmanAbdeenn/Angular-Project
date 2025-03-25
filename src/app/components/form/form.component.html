@@ -1,0 +1,49 @@
+<div class="form-container">
+  <h2>{{ editMode ? 'Edit User' : 'Create User' }}</h2>
+  <form [formGroup]="userForm">
+    <h3>User Information</h3>
+    <div class="form-row">
+      <div class="form-column">
+        <app-shared-input label="Name" type="text" [control]="nameControl" placeholder="Enter name" [submitted]="submitted"></app-shared-input>
+      </div>
+      <div class="form-column">
+        <app-shared-input label="Username" type="text" [control]="usernameControl" placeholder="Enter username" [submitted]="submitted"></app-shared-input>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-column">
+        <app-shared-input label="Email" type="email" [control]="emailControl" placeholder="Enter email" [submitted]="submitted"></app-shared-input>
+      </div>
+      <div class="form-column">
+        <app-shared-input label="City" type="dropdown" [control]="cityControl" placeholder="Select a city" [options]="cities" [submitted]="submitted"></app-shared-input>
+      </div>
+    </div>
+    <h3>Address Details</h3>
+    <div class="form-row">
+      <div class="form-column">
+        <app-shared-input label="Street" type="text" [control]="streetControl" placeholder="Enter street" [submitted]="submitted"></app-shared-input>
+      </div>
+      <div class="form-column">
+        <app-shared-input label="Zipcode" type="text" [control]="zipcodeControl" placeholder="Enter zipcode" [submitted]="submitted"></app-shared-input>
+      </div>
+    </div>
+    <h3>Company Information</h3>
+    <div class="form-row">
+      <div class="form-column">
+        <app-shared-input label="Company Name" type="text" [control]="companyNameControl" placeholder="Enter company name" [submitted]="submitted"></app-shared-input>
+      </div>
+      <div class="form-column">
+        <app-shared-input label="Catchphrase" type="text" [control]="companyCatchphraseControl" placeholder="Enter company catchphrase" [submitted]="submitted"></app-shared-input>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-column">
+        <app-shared-input label="Business" type="text" [control]="companyBsControl" placeholder="Enter business details" [submitted]="submitted"></app-shared-input>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button pButton type="button" label="Cancel" class="p-button-secondary" [routerLink]="['/users']"></button>
+      <button pButton type="submit" class="p-button-success" (click)="save()">{{ editMode ? 'Update' : 'Save' }}</button>
+    </div>
+  </form>
+</div>

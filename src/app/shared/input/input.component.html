@@ -1,0 +1,29 @@
+<div class="form-group">
+  <label>{{ label }}</label>
+
+  <div class="input-wrapper">
+
+    <input *ngIf="type !== 'dropdown'" 
+           [type]="type" 
+           [formControl]="control" 
+           [placeholder]="placeholder"
+           class="input"
+           [ngClass]="{'invalid': control.invalid && control.touched}">
+
+    <p-dropdown *ngIf="type === 'dropdown'" 
+                [options]="options" 
+                [formControl]="control" 
+                [placeholder]="placeholder"
+                optionLabel="label"
+                optionValue="value"
+                class="dropdown"
+                [ngClass]="{'invalid': control.invalid && control.touched}">
+    </p-dropdown>
+
+  </div>
+
+  <small class="error" *ngIf="control.invalid && control.touched">
+    <span class="error-msg" *ngIf="control.errors?.['required']">{{ label }} is required.</span>
+    <span class="error-msg" *ngIf="control.errors?.['email']">Invalid email format.</span>
+  </small>
+</div>

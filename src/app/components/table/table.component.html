@@ -1,0 +1,12 @@
+
+<app-s-table
+  [data]="users"
+  [columns]="columns"
+  (edit)="editUser($event)"
+  (delete)="deleteUser($event)">
+</app-s-table>
+<p-confirmDialog></p-confirmDialog>
+
+<app-dialog [title]="'Deletion'" [message]="'Are you sure you want to delete the user'"
+[confirmLabel]="'Delete'" [isVisible]="dialogIsVisible" (closed)="onDialogClose()"
+[onConfirmAction]="onConfirmDelete.bind(this)"></app-dialog>

@@ -1,0 +1,32 @@
+<div class="table-wrapper">
+  <p-table [value]="data" [paginator]="true" [rows]="5" styleClass="p-datatable-striped" [rowHover]="true">
+    
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns">{{ col.header }}</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td *ngFor="let col of columns">{{ resolveField(row, col.field) }}</td>
+        <td class="actions">
+          <p-overlayPanel #menu>
+            <ul class="action-menu">
+              <li [routerLink]="['/users/edit', row.id]">Edit</li>
+              <li (click)="menu.hide(); delete.emit(row)">Delete</li>
+            </ul>
+          </p-overlayPanel>
+          <button class="dots-btn" (click)="menu.toggle($event)">...</button>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="columns.length + 1" class="text-center">No data found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
