@@ -5,11 +5,11 @@
     border-right: 2px solid green;
     position: fixed;
     left: 0;
+    top:0;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1000; 
-    padding-top: 55px;
 }
 
 .menu-item {
@@ -24,6 +24,17 @@
     text-decoration: none;
 }
 
+.first-menu-item {
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+    background: none;
+    background-color: #129127;
+    font-size: 22px;
+    cursor: pointer;
+    text-decoration: none;
+    color: white
+}
 .menu-item:hover {
     background-color: #129127;
 }
