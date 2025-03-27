@@ -1,6 +1,11 @@
-
+<input
+  type="text"
+  placeholder="Search users..."
+  [(ngModel)]="searchTerm"
+  (ngModelChange)="filterUsers()"
+  class="search-input" />
 <app-s-table
-  [data]="users"
+  [data]="searching ? searchedUsers : users"
   [columns]="columns"
   (edit)="editUser($event)"
   (delete)="deleteUser($event)">

@@ -9,20 +9,24 @@ import { ToastService } from '../../services/toast.service';
 import { STableComponent } from '../../shared/s-table/s-table.component';
 import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { Dialog } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, RouterModule, ConfirmDialogModule, STableComponent, DialogComponent],
+  imports: [CommonModule, RouterModule, ConfirmDialogModule, STableComponent, DialogComponent, FormsModule] ,
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
   providers: [ConfirmationService]
 })
 export class TableComponent implements OnInit {
   users: UserData[] = [];
+  searchedUsers: UserData[] = [];
   rows = 5;
   dialogIsVisible = false;
   deletedUser:UserData |null = null
+  searchTerm: string = '';
+  searching = false;
 
   columns = [
     { field: 'name', header: 'Name' },
@@ -77,6 +81,17 @@ export class TableComponent implements OnInit {
   onDialogClose() {
     this.dialogIsVisible = false;
     this.deletedUser = null;
+  }
+  filterUsers() {
+    const term = this.searchTerm.toLowerCase();
+    if (term === '') {
+      this.searching = false;
+      return;
+    }
+    this.searchedUsers = this.users.filter((user) =>
+      user.name.toLowerCase().includes(term)
+    );
+    this.searching = true;
   }
   
   

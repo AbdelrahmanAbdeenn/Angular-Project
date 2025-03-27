@@ -12,5 +12,5 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-  // Simplified component - no longer managing form display
+
 }
